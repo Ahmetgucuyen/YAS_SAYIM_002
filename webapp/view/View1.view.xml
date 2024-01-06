@@ -1,0 +1,122 @@
+<mvc:View controllerName="app.YAS_SAYIM_002.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar" xmlns:svm="sap.ui.comp.smartvariants">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<!--<Page id="page" title="{i18n>title}">-->
+				<!--	<content></content>-->
+				<!--</Page>-->
+				<f:DynamicPage headerExpanded="{/headerExpanded}">
+					<f:title>
+						<!--<f:DynamicPageTitle>-->
+						<!--	<f:heading>-->
+						<!--		<svm:SmartVariantManagement id="svm" showExecuteOnSelection="true"/>-->
+						<!--	</f:heading>-->
+						<!--	<f:expandedContent>-->
+						<!--		<Label id="expandedLabel" text="No filters active"/>-->
+						<!--	</f:expandedContent>-->
+						<!--	<f:snappedContent>-->
+						<!--		<Label id="snappedLabel" text="No filters active"/>-->
+						<!--	</f:snappedContent>-->
+						<!--</f:DynamicPageTitle>-->
+					</f:title>
+					<f:header>
+						<f:DynamicPageHeader>
+							<f:content>
+								<fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="onSearch" filterChange="onSearch"
+									afterVariantLoad=".onAfterVariantLoad">
+									<fb:filterGroupItems>
+										<fb:FilterGroupItem name="Bukrs" label="Şirket Kodu" groupName="Group1" visibleInFilterBar="true">
+											<fb:control>
+												<Input id="idBukrs" showValueHelp="true" valueHelpRequest="onValueHelpBukrs"/>
+											</fb:control>
+										</fb:FilterGroupItem>
+										<fb:FilterGroupItem name="Werks" label="Üretim Yeri" groupName="Group1" visibleInFilterBar="true">
+											<fb:control>
+												<Input id="idWerks" showValueHelp="true" valueHelpRequest="onValueHelpWerks"/>
+											</fb:control>
+										</fb:FilterGroupItem>
+										<fb:FilterGroupItem name="Lgort" label="Depo Yeri" groupName="Group1" visibleInFilterBar="true">
+											<fb:control>
+												<Input id="idLgort" showValueHelp="true" valueHelpRequest="onValueHelpLgort"/>
+											</fb:control>
+										</fb:FilterGroupItem>
+										<fb:FilterGroupItem name="Statu" label="Durum" groupName="Group1" visibleInFilterBar="true">
+											<fb:control>
+												<Select id="idStatu" valueState="None" editable="true" enabled="true" icon="empty string" textAlign="Initial" textDirection="Inherit"
+													forceSelection="false">
+													<items>
+														<core:Item key="" text="Hepsi"/>
+														<core:Item key="01" text="Yeni Talep"/>
+														<core:Item key="02" text="Sayım Devam Ediyor"/>
+														<core:Item key="03" text="Sayım Tamamlandı"/>
+													</items>
+												</Select>
+												<!--<MultiComboBox name="SupplierName" selectionChange=".onSelectionChange" items="{ path: '/ProductSuppliers', templateShareable: true }">-->
+												<!--	<core:Item key="{key}" text="{name}"/>-->
+												<!--</MultiComboBox>-->
+											</fb:control>
+										</fb:FilterGroupItem>
+									</fb:filterGroupItems>
+								</fb:FilterBar>
+							</f:content>
+						</f:DynamicPageHeader>
+					</f:header>
+					<f:content>
+						<Table selectionChange="onGoto" mode="SingleSelectMaster" id="table" inset="false" items="{ path: '/TalepListesi1Set' }">
+							<columns>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Sayım No"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Şirket Kodu"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Üretim Yeri"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Depo Yeri"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Periyot"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Tarih"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Durum"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem vAlign="Middle">
+									<cells>
+										<!--<ObjectIdentifier title="{SayimId}" text="{SayimId}"/>-->
+										<Text text="{ path: 'SayimId', formatter: '.idFormatter' }"/>
+										<ObjectIdentifier title="{Bukrs}" text="{Butxt}"/>
+										<!--<Text text="{Bukrs}"/>-->
+										<ObjectIdentifier title="{Werks}" text="{Name1}"/>
+										<!--<Text text="{Werks}"/>-->
+										<ObjectIdentifier title="{Lgort}" text="{Lgobe}"/>
+										<!--<Text text="{Lgort}"/>-->
+										<Text text="{ path: 'Period', formatter: '.periodFormatter' }"/>
+										<Text text="{path:'Tarih', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' , UTC: true }}"/>
+										<Text text="{ path: 'Statu', formatter: '.statuFormatter' }">
+											<customData>
+												<core:CustomData key="state" value="{ path: 'Statu', formatter: '.formatter.confirmedState' }"/>
+											</customData>
+										</Text>
+										<!--<ObjectStatus-->
+										<!--	text="{= ${Statu} === '01' ? 'Yeni Talep' : ${Statu} === '02' ? 'Sayım Devam Ediyor' : ${Statu} === '03' ? 'Sayım Tamamlandı' : ''}"-->
+										<!--	state="{path: 'Statu', formatter: '.formatter.confirmedState'}"/>-->
+										<!--<Text text="{Category}"/>-->
+										<!--<Text text="{SupplierName}"/>-->
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</f:content>
+				</f:DynamicPage>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

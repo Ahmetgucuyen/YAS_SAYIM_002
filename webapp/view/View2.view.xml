@@ -1,0 +1,86 @@
+<mvc:View controllerName="app.YAS_SAYIM_002.controller.View2" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:fb="sap.ui.comp.filterbar" xmlns:svm="sap.ui.comp.smartvariants">
+	<Shell id="shell2">
+		<App id="app2">
+			<pages>
+				<Page id="page2" title="{i18n>title} {viewModel>/sayimId}" showNavButton="true" navButtonPress="onBack">
+					<content>
+						<f:Form class="sapUiSmallMarginTop" editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"/>
+							</f:layout>
+							<f:formContainers>
+								<!--<VBox>-->
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="Barkod ya da Malzeme Numarası Okutunuz">
+											<f:fields>
+												<VBox>
+													<Input id="idBarkod" width="450px" change="onBarkod"/>
+													<!--<Input id="idMatnr1" visible="false" width="450px" change="onBarkod"/>-->
+												</VBox>
+											</f:fields>
+										</f:FormElement>
+										<!--<f:FormElement id="idMatnr1" visible="false" label="Malzeme Kodu Okutunuz">-->
+										<!--	<f:fields>-->
+										<!--		<VBox>-->
+										<!--<Input id="idBarkod" width="450px" change="onBarkod"/>-->
+										<!--			<Input id="idMatnr2" width="450px" change="onBarkod"/>-->
+										<!--		</VBox>-->
+										<!--	</f:fields>-->
+										<!--</f:FormElement>-->
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<Panel id="panel2" visible="false" expanded="false" expandable="true" headerText="Malzeme Bilgileri">
+							<f:Form>
+								<f:layout>
+									<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+										emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"/>
+								</f:layout>
+								<f:formContainers>
+									<f:FormContainer>
+										<f:formElements>
+											<f:FormElement label="Malzeme Adı">
+												<f:fields>
+													<HBox>
+														<Text id="idMatnr" valueHelpRequest="onValueHelpWerks" width="195px"/>
+													</HBox>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="Adet">
+												<f:fields>
+													<HBox>
+														<Input id="idAdet" width="195px" valueHelpRequest="onValueHelpLgort"/>
+													</HBox>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="">
+												<f:fields>
+													<HBox>
+														<Button class="sapUiLargeMarginBegin" width="100px" text="Kaydet" press="onCreate" icon="sap-icon://save" type="Success"></Button>
+														<!--<Button class="sapUiLargeMarginBegin" width="100px" text="update" press="onUpdate" icon="sap-icon://save" type="Emphasized"></Button>-->
+													</HBox>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+									<!--</VBox>-->
+								</f:formContainers>
+							</f:Form>
+						</Panel>
+						<!--</VBox>-->
+					</content>
+					<footer>
+						<OverflowToolbar>
+							<ToolbarSpacer/>
+							<Button text="Sayımı Tamamla" press="onTamamla" type="Emphasized"/>
+						</OverflowToolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
